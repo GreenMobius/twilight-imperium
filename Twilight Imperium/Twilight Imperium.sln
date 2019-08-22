@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game Core", "Game Core\Game Core.csproj", "{797DF853-75A7-4892-9B63-F58E02C59277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game CLI", "Game CLI\Game CLI.csproj", "{9AF87702-0374-4BF6-A298-E3C3125025B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{797DF853-75A7-4892-9B63-F58E02C59277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797DF853-75A7-4892-9B63-F58E02C59277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797DF853-75A7-4892-9B63-F58E02C59277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797DF853-75A7-4892-9B63-F58E02C59277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF87702-0374-4BF6-A298-E3C3125025B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF87702-0374-4BF6-A298-E3C3125025B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF87702-0374-4BF6-A298-E3C3125025B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF87702-0374-4BF6-A298-E3C3125025B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
