@@ -8,15 +8,28 @@ namespace Game_Core.Phases.Strategy
     
     public StrategyPhase(GameContext context) : base(context) { }
 
-    public override void RunPhase()
+    public override void StartPhase()
     {
       Repeat = GameContext.NumPlayers <= 4;
-      var continuation = new List<GamePhase>();
       foreach (var player in GameContext.PlayersBySpeaker())
       {
-        continuation.Add(new StrategyCardSelectionState(GameContext, player));
+        States.Add(new StrategyCardSelectionState(GameContext, player));
       }
-      
+    }
+
+    public override bool RunPhase()
+    {
+      if (States.Count == 0)
+      {
+        return false;
+      }
+      CurrentState = States[0];
+      States.RemoveAt(0);
+      return true;
+    }
+
+    public override void EndPhase()
+    {
       GameContext.TransitionTo(new StrategyPhase(GameContext));
     }
   }

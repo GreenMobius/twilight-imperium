@@ -14,7 +14,7 @@ namespace Game_Core
 
     public GameContext(List<Player> players)
     {
-      Init(players, new StartPhase(this));
+      Init(players, new InitPhase(this));
     }
     
     public GameContext(List<Player> players, GamePhase phase)
