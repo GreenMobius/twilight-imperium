@@ -1,59 +1,69 @@
 ﻿using System;
-using Game_Core.States;
+using System.Collections.Generic;
+using System.Linq;
+using Game_Core.Phases;
 
 namespace Game_Core
 {
   public class GameContext
   {
-    private GameState State { get; set; }
-    public int NumPlayers { get; private set; }
+    private GamePhase Phase { get; set; }
+    private List<Player> Players { get; set; }
+    public int NumPlayers => Players.Count;
     public bool Playing { get; set; }
-    public int PlayerId { get; set; }
 
-    public GameContext(int players)
+    public GameContext(List<Player> players)
     {
-      Init(players, new StartState(this));
+      Init(players, new StartPhase(this));
     }
     
-    public GameContext(int players, GameState state)
+    public GameContext(List<Player> players, GamePhase phase)
     {
-      Init(players, state);
+      Init(players, phase);
     }
 
-    private void Init(int players, GameState state)
+    private void Init(List<Player> players, GamePhase phase)
     {
-      NumPlayers = players;
-      State = state;
+      Players = players;
+      Phase = phase;
       Playing = true;
-      PlayerId = 0;
-    }
-
-    public void Next()
-    {
-      State.AdvancePlayer();
     }
 
     public string Status()
     {
-      return $"Players: {NumPlayers}, State: {State}, Active: {PlayerId}";
+      return $"State: {Phase}";
     }
 
-    public void TransitionTo(GameState state)
+    public void TransitionTo(GamePhase phase)
     {
-      Console.WriteLine($"Moving from state {State} to state {state}");
-      State = state;
+      Console.WriteLine($"Moving from state {Phase} to state {phase}");
+      Phase = phase;
     }
-  }
 
-  public abstract class GameState
-  {
-    protected GameContext GameContext { get; }
-
-    protected GameState(GameContext context)
+    public IEnumerable<Player> PlayersByInitiative()
     {
-      GameContext = context;
+      yield return null;
     }
 
-    public abstract void AdvancePlayer();
+    public IEnumerable<Player> PlayersBySpeaker() 
+    {
+      var startIndex = 0;
+      for (;;startIndex++) { if (Players[startIndex].Speaker) { break; } }
+
+      for (var i = 0; i < NumPlayers; i++)
+      {
+        yield return Players[(i + startIndex) % NumPlayers];
+      }}
+    
+    public IEnumerable<Player> PlayersByPlayer(Player p)
+    {
+      var startIndex = 0;
+      for (;;startIndex++) { if (Players[startIndex].Equals(p)) { break; } }
+
+      for (var i = 0; i < NumPlayers; i++)
+      {
+        yield return Players[(i + startIndex) % NumPlayers];
+      }
+    }
   }
 }

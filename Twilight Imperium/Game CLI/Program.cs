@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Game_Core;
 
 namespace Game_CLI
@@ -7,7 +8,8 @@ namespace Game_CLI
   {
     private static void Main(string[] args)
     {
-      var context = new GameContext(6);
+      //TODO define players
+      var context = new GameContext(new List<Player>());
       while (context.Playing)
       {
         var input = Console.ReadLine();
@@ -17,9 +19,7 @@ namespace Game_CLI
         }
         switch (FirstCommand(input))
         {
-          case "next":
-            context.Next();
-            break;
+          //TODO add some commands
           case "status":
             Console.WriteLine(context.Status());
             break;
