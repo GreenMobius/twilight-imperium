@@ -6,14 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-<<<<<<< Updated upstream
       <Folder Include="Resources" />
-=======
       <Folder Include="Phases\Action" />
       <Folder Include="Phases\Agenda" />
       <Folder Include="Phases\Setup" />
       <Folder Include="Phases\Status" />
->>>>>>> Stashed changes
     </ItemGroup>
 
 </Project>
