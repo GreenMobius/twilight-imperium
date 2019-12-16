@@ -2,8 +2,8 @@
 {
   public abstract class GameState
   {
-    protected GameContext GameContext { get; set; }
-    protected Player ActivePlayer { get; set; }
+    private GameContext GameContext { get; set; }
+    private Player ActivePlayer { get; set; }
 
     public GameState(GameContext context, Player player)
     {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Game_Core.Phases.Strategy;
+﻿using Game_Core.Phases.Strategy;
 
 namespace Game_Core.Phases
 {

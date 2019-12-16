@@ -7,7 +7,7 @@ namespace Game_Core
 {
   public class GameContext
   {
-    private GamePhase Phase { get; set; }
+    public GamePhase Phase { get; set; }
     private List<Player> Players { get; set; }
     public int NumPlayers => Players.Count;
     public bool Playing { get; set; }

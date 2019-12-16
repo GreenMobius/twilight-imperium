@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Game_Core.Phases.Strategy
 {
@@ -11,7 +12,12 @@ namespace Game_Core.Phases.Strategy
     public override void StartPhase()
     {
       Repeat = GameContext.NumPlayers <= 4;
-      foreach (var player in GameContext.PlayersBySpeaker())
+      var playerList = GameContext.PlayersBySpeaker();
+      if (Repeat)
+      {
+        playerList = playerList.Concat(GameContext.PlayersBySpeaker());
+      }
+      foreach (var player in playerList)
       {
         States.Add(new StrategyCardSelectionState(GameContext, player));
       }
